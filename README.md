@@ -20,9 +20,11 @@ This is a demonstration of building in an Astro website. XElement is exclusively
 
 ### XElement
 
-[npm package](https://www.npmjs.com/package/astro-xelement)
-[What is XElement?](https://xelement-docs.vercel.app/docs/sarahedits/overview#xelement)
-[XElement API](https://xelement-docs.vercel.app/docs/api/overview#xelement-api)
+- [npm package](https://www.npmjs.com/package/astro-xelement)
+
+- [What is XElement?](https://xelement-docs.vercel.app/docs/sarahedits/overview#xelement)
+
+- [XElement API](https://xelement-docs.vercel.app/docs/api/overview#xelement-api)
 
 ### [eBird API](https://documenter.getpostman.com/view/664302/S1ENwy59?version=latest)
 
