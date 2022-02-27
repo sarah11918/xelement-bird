@@ -1,0 +1,18 @@
+---
+import XElement from 'astro-xelement'
+
+const {div:Display}=XElement
+
+const parentFunc=(el,store)=>{
+    console.log(store.birdList)
+}
+
+---
+   
+    <Display
+        class="birdPending"
+        style={` color: "#3d5262" `}
+        id="js_birdList">
+        <span id="list1"></span>
+        <span id="list2"></span>
+    </Display>

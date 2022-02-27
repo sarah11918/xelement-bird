@@ -1,0 +1,15 @@
+---
+import XElement from 'astro-xelement'
+
+const {Form, Input, Button} = XElement
+---
+
+<Form @do={(element,store)=>{
+  
+}}>
+    <Input name="defaultLocation"
+           type="text"
+           placeholder="eBird region ID eg. CA-PE-PR"
+    />
+    <Button>Set a default Location</Button>
+</Form>

@@ -1,0 +1,29 @@
+---
+import XElement from 'astro-xelement'
+import XForm from './XForm.astro'
+import XLocation from './XLocation.astro'
+import BirdList from './BirdList.astro'
+
+const {h5:Report}=XElement
+---
+<h3>Welcome to my bird app!</h3>
+<div>
+    <p style={{fontSize: "0.75em", fontStyle: "italic", paddingBottom: "0.25em"}}>Set a default location</p>
+    <div class="all-details">
+    <p>
+      <span>Type in a new default location code</span>
+    <XForm/>
+    </p>
+</div>
+<div style={{ backgroundColor: "#eef9ed", padding:"0.5em", border: "1px solid green", borderRadius: "2px"}}>
+      <h3>See recent reports of Rare or Unusual birds!</h3>
+      <Report class="birdtab"
+        @do={(el,store)=>{
+            this.textContent=`Showing birds reported in:${store.location}/ Default Location: ${store.defaultLocation} `
+        }}
+      >
+        
+      </Report>
+      <XLocation/>
+</div>
+<BirdList/>
