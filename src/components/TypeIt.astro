@@ -1,0 +1,18 @@
+---
+  import XE from './XE/XE.js'
+
+  const {p:TypeItText} = XE
+---
+
+<TypeItText 
+@do={()=> 
+  new TypeIt(this,{
+    lifeLike:true,
+    waitUntilVisible:true,
+    afterComplete:(step)=>{
+    step.destroy();
+  }
+  })
+  .go()
+}><slot/></TypeItText><script type="module" src="https://unpkg.com/typeit@8.1.0/dist/index.umd.js" hoist></script>
+

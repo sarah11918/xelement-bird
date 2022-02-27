@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import App from '../bird/App.jsx';
+
+
+import { Accordion, AccordionItem } from 'accessible-astro-components'
+import { Markdown } from 'astro/components';
+---
+<BaseLayout title="sBird">
+  <style lang="scss" global>
+  
+  .regions {
+    background: #eef9ed;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-left: 0.5em;
+  }
+  .panel__inner {
+    background: lightgreen;
+    overflow-x: hidden;
+    overflow-y: scroll; 
+    height: 60vh;
+  }
+
+  .panel__inner::-webkit-scrollbar {
+    width: 8px;
+}
+ .panel__inner::-webkit-scrollbar-thumb {
+    background: #909090;
+    border-radius: 8px;
+}
+panel__inner::-webkit-scrollbar-track {
+    background: #FFFFFF;
+}
+   button {
+        height: 3em;
+    }
+
+    input {
+        height: 3em;
+    }
+    button.accordion__header {
+      height: auto;
+  }
+
+  </style>
+  
+  <main>
+    <App client:load />
+  </main>
+</BaseLayout>

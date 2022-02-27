@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { Markdown } from 'astro/components';
+const content = await fetch('https://raw.githubusercontent.com/sarah11918/xelement-bird/main/README.md').then(res => res.text());
+---
+<BaseLayout title="XBird">
+ <main>
+    <Markdown>
+     # About xBird
+
+        This is a community, build-in-public experiment where we take an existing [React “sBird” app from Sarah’s Astro website](https://rainsberger.ca/sbird) and try to reproduce the functionality in Astro using XElement.
+
+        sBird, and this site, was built by [Sarah](https://rainsberger.ca/) and XElement is the creation of [Fuzzy](https://afuzzybear.hashnode.dev/).
+
+        The [repository is on GitHub](https://github.com/sarah11918/xbird) and we will be live-coding in the [Astro Discord](https://astro.build/chat) where we’ll provide a link to a shared workspace on [Gitpod](https://gitpod.io) so we can all be in the code remotely, together!
+
+        ## About This Site
+
+        [sBird](/sbird) - The original sBird app written in React.
+
+        [XElement](/xelement) - A “kitchen sink” demonstration of just some of the wild and wonderful interactive things you can accomplish in Astro with XElement!
+
+        [xBird](/xbird) - The current, published state of the work-in-progress
+
+        ## About Astro
+
+        Astro is a static site generator that focuses on shipping less JavaScript to the client.
+
+        JavaScript is run at build time to produce static HTML pages, so client-side site interactivity is achieved by adding `<script>`s or JavaScript framework components (React, Vue, Svelte, Solid, Preact) that can be individually “hydrated” on an as-needed basis.
+
+        ## About XElement
+
+        XElement is an Astro-native solution to providing interactive web elements!
+
+        XElement allows you to create dynamic HTML elements with interactivity (e.g. animations, transitions, event listeners) natively in an Astro page or component… without the need for writing and importing a component in one of the JavaScript frameworks Astro supports.
+
+        ## Project README
+        <Markdown content = {content} />
+
+    </Markdown>
+ </main>
+</BaseLayout>  

@@ -1,0 +1,15 @@
+---
+  import XE from './XE/XE.js'
+
+  const {p:Timer} = XE
+---
+
+<Timer @do={(element)=>{
+    function timer(){
+      let time = new Date().toLocaleTimeString()
+      element.textContent = time
+      requestAnimationFrame(timer)
+    }
+    timer()
+}}/>
+

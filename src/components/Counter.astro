@@ -1,0 +1,20 @@
+---
+  import XE from './XE/XE.js'
+
+  const {Counter, p:Display, button:Button} = XE
+---
+
+  <Counter
+    @do={(element,store)=>{
+        store.count = 0
+    }}>
+    <Display id="display">0</Display>
+    <Button 
+        @click={(_,store)=>{ display.textContent = ++store.count}}>
+             Increment
+    </Button>
+    <Button 
+        @click={(_,store)=>{ display.textContent = --store.count}}>
+             Decrement
+    </Button>
+</Counter>

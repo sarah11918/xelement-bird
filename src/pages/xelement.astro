@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import XE from '../components/XE/XE.js';
+import Counter from '../components/Counter.astro';
+import ControlAnimation from '../components/ControlAnimation.astro';
+import Clock from '../components/Clock.astro';
+import Fetch from '../components/Fetch.astro';
+import TypeIt from '../components/TypeIt.astro';
+
+const {div:Surprise, button:Button} = XE
+
+
+---
+<BaseLayout title = "XElement Kitchen Sink">
+<main>
+ <TypeIt>
+    Hello, this is XElement <br>
+    Prepare to be assimilated. <br>
+    Resistance is futile.
+  </TypeIt>
+
+    <Counter/>
+
+  <Surprise 
+  @do={async function(element,store,){
+    console.log(store)
+    const confetti = await import('https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js')
+    console.log('started')
+  }}
+  @visible={(element,store,opts={threshold:[0.25,0.5,1]})=>{console.log('visible',this)}}
+  @resize={(element,store)=>console.log('resized',this)}
+  @click:once={(ev,store,opt={useCapture:'true'})=>{
+    this.textContent='SURPRISE!!!!!!!!!!!!!!!!!'
+
+    confetti()
+    console.log(this,store.lib.a); }}
+  @observe={(element,store)=>{console.log('observe',this)}}
+  @animate={
+  ({transform:'translateX(0)'},
+  {transform:'translateX(40vw)'},)
+  }
+  @timings={
+   ({
+     duration:2000,
+     fill:'both',
+     delay: 9000,
+   })
+  }
+  >
+    Click this text for a ... 
+  </Surprise>
+
+
+
+
+  <ControlAnimation />
+
+
+  <Clock/>
+
+
+  <Fetch/>
+
+ 
+</div>
+
+</main>
+</BaseLayout>

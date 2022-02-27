@@ -1,0 +1,188 @@
+header {
+    background: #3d5262;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  
+  .logo {
+    min-width: 72px;
+  }
+  
+  a.logo {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    background: #1d2226;
+    width: 100%;
+    visibility: hidden;
+    transform: translateX(50%);
+    opacity: 0;
+    transition: all 0.4s;
+    overflow-y: scroll;
+    padding-bottom: 1em;
+  }
+  
+  .exit {
+    width: 2em;
+    float: right;
+    margin: 0.6em;
+    cursor: pointer;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 4em;
+  }
+  
+  .nav-link a {
+    color: #addbff;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 1em 1em;
+    border-bottom: 1px dashed grey;
+  }
+  
+  .open {
+    cursor: pointer;
+    margin: 0.7em;
+  }
+  
+  .nav-link .active a {
+    color: #008af8;
+    font-weight: bold;
+  }
+  
+  .nav-link a:hover {
+    background: #2e363d;
+  }
+  
+  .open-nav {
+    visibility: unset;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .social-links {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 0.2rem;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .social-links:hover {
+    color: white;
+  }
+  
+  .social-links:focus {
+    color: white;
+  }
+  
+  .button-circle {
+    align-items: center;
+    border: 2px solid #a1a1a1;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: inline-flex;
+    font-size: 1em;
+    height: 2.22222em;
+    justify-content: center;
+    line-height: 2.22222em;
+    padding-top: 0.5em;
+    position: relative;
+    width: 2.22222em;
+  }
+  
+  svg {
+    color: #addbff;
+  }
+  
+  .social-footer {
+    visibility: hidden;
+    height: 0;
+  }
+  
+  .site-header-vertical {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    
+  }
+  
+  .site-branding {
+    color: white;
+    overflow: visible;
+    padding: 20px;
+  }
+  .site-title {
+    color: white;
+    overflow: visible;
+  }
+  .site-description {
+    color: white;
+    overflow: visible;
+  }
+  
+  @media (min-width: 920px) {
+    .open,
+    .exit {
+      display: none;
+    }
+  
+    nav {
+      visibility: unset;
+      background: none;
+      position: unset;
+      height: auto;
+      opacity: 1;
+      transform: translateX(0);
+      max-width: 50%;
+      overflow-y: unset;
+    }
+  
+    .nav-list {
+      display: flex;
+      margin-top: auto;
+      width: auto;
+      float: right;
+      margin: 0;
+    }
+  
+    .nav-link a {
+      color: #addbff;
+      display: block;
+      padding: 1em;
+      inline-size: min-content;
+      white-space: nowrap;
+    }
+  
+    .nav-link .active a {
+      color: white;
+    }
+  
+    .social {
+      visibility: hidden;
+    }
+  
+    .social-footer {
+      visibility: visible;
+      max-width: 50%;
+      margin: 0.5em auto;
+      height: auto;
+    }
+    .button-circle {
+      display: reset;
+    }
+
+  }

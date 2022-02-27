@@ -1,0 +1,121 @@
+.birdnav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1.5em;
+  }
+  
+  .birdtab {
+    background: rgb(157, 218, 157);
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    min-width: 70px;
+    text-align: center;
+  }
+  
+  .bird-welcome {
+    text-align: center;
+  }
+  
+  .birdPending {
+    font-style: italic;
+    margin-bottom: 1.5em;
+  }
+  
+  .birdItem {
+    margin-bottom: 1.5em;
+  }
+  
+  .birdVerified {
+    margin-bottom: 1.5em;
+  }
+  
+  
+  .birdNotValid {
+    text-decoration:line-through;
+  }
+  
+  .bird-result{
+    margin: 0;
+    font-size: 2em;
+    text-align: center;
+    background: blue;
+    color: white;
+  }
+  
+  .quickLocation {
+   margin-left: 1em;
+   margin-bottom: 0.5em;
+  }
+  
+  .region-button {
+    background: lavender;
+    transition: all 0.5s;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+  }
+  .region-button:hover {
+    background: rgb(157, 218, 157);
+  }
+  
+  .region-button:focus {
+    background: rgb(157, 218, 157);
+  }
+  
+  .region-button{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .region-button:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;  
+    
+    right: -20px;
+    transition: 0s;
+  }
+  
+  .region-button:hover{
+    padding-right: 24px;
+    padding-left:8px;
+  }
+  
+  .region-button:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
+  .region-button:focus{
+    padding-right: 24px;
+    padding-left:8px;
+  }
+  
+  .region-button:focus:after {
+    opacity: 1;
+    right: 10px;
+  }
+
+  .sub-regions {
+    background: #eef9ed;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 60vh;
+    padding-left: 0.5em;
+}
+
+.sub-regions::-webkit-scrollbar {
+  width: 8px;
+}
+.sub-regions::-webkit-scrollbar-thumb {
+  background: #909090;
+  border-radius: 8px;
+}
+.sub-regions::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+.all-details{
+  padding-bottom: 1em;
+}

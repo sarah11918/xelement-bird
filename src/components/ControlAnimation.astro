@@ -1,0 +1,61 @@
+---
+  import XE from './XE/XE.js'
+
+  const {div:AnimatedWindow,div:Box,h2:Text,button:Btn} = XE
+
+---
+
+    <AnimatedWindow
+      @do={(element)=>{
+         const title = this.querySelector('#title')
+         const BoxAnimation =[] 
+         this.querySelectorAll('#box').forEach((box,index)=>BoxAnimation.push(box.animate(
+         [
+            {transform: 'translateX(0px)'},
+            {transform: 'translateX(200px) '},
+            {transform: 'translateX(0px)'}
+         ],
+         {
+            duration: 8500,
+            iterations:'Infinity',
+            timingFunction:"ease-out",
+            delay: index*1000,
+            fill: 'both'
+         }
+        )))
+        const button = this.querySelector('#btn')
+        function handleAnimation(){
+           for(const box of BoxAnimation){
+           if(box.playState === 'running'){
+                title.textContent= 'Click to Play'
+                button.textContent = 'Play'
+                box.pause()
+            }else if( box.playState === 'paused'){
+                title.textContent = 'Click to Pause'
+                button.textContent = 'Pause'
+                box.play()
+            }
+           }
+         }
+         button.onclick=()=>setTimeout(()=>{handleAnimation()},250);
+      }}>
+      <Text @is="h1" id="title">
+         Click The Button to Interact With Me
+      </Text>
+      <Box id='box'/>
+      <Box id='box'/>
+      <Box id='box'/>
+      <Btn id='btn'>
+         Start/Stop the animation
+      </Btn>
+  </AnimatedWindow>
+
+
+  <style>
+    #box{
+      width:80px;
+      height:80px;
+      background-image:url("https://lh3.googleusercontent.com/pw/AM-JKLUwoJunFVUl0-53MQ2wr8-kKjtUCgbZ2AS5hJg7pLtMM-vz8bL9jrDEKxx68OKZT8Rndip28WehHVZwX63UrsE13B5O7o2wys7TswfzAXp2YZAkBJVu1hyk2thtIDPg1YW0-FEZi8h5vzV5uLY1WNunhw=w80-no?.jpg");
+      margin:5px;
+    }
+  </style>
