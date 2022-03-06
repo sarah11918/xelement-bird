@@ -7,6 +7,7 @@ import Recent from './Recent.jsx';
 import RegionDate from './RegionDate.jsx'
 
 const App = () => {
+  //This is the global state- captures the default location -Canada Prince-Edward Island-Prince County
   const [defaultLocation, setDefaultLocation] = useState("CA-PE-PR");
 
   function changeDefaultLocation(event) {

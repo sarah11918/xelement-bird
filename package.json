@@ -1,32 +1,31 @@
 {
-    "name": "xbird",
-    "version": "1.0.0",
-    "private": true,
-    "description": "xBird",
-    "main": "src/pages/index.astro",
-    "author": {
-      "name": "Sarah Rainsberger",
-      "url": "https://xbird.netlify.app"
-    },
-    "license": "MIT",
-    "scripts": {
-      "dev": "bash parseenv.sh astro dev",
-      "start": "bash parseenv.sh astro dev",
-      "build": "bash parseenv.sh astro build",
-      "preview": "astro preview"
-    },
-    "devDependencies": {
-      "@astrojs/renderer-react": "^0.4.1",
-      "@astrojs/renderer-svelte": "^0.3.0",
-      "accessible-astro-components": "^1.1.0",
-      "astro": "^0.22.20",
-      "astro-xelement": "^3.1.6"
-    },
-    "dependencies": {
-      "@astropub/icons": "^0.1.1"
-    },
-    "keywords": [
-      "astro"
-    ]
-  }
-  
+  "name": "xbird",
+  "version": "1.0.0",
+  "private": true,
+  "description": "xBird",
+  "main": "src/pages/index.astro",
+  "author": {
+    "name": "Sarah Rainsberger",
+    "url": "https://xbird.netlify.app"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "bash parseenv.sh astro dev",
+    "start": "bash parseenv.sh astro dev",
+    "build": "bash parseenv.sh astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/renderer-react": "^0.4.1",
+    "@astrojs/renderer-svelte": "^0.3.0",
+    "accessible-astro-components": "^1.1.0",
+    "astro": "^0.22.20",
+    "astro-xelement": "^3.1.7"
+  },
+  "dependencies": {
+    "@astropub/icons": "^0.1.1"
+  },
+  "keywords": [
+    "astro"
+  ]
+}
