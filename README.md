@@ -22,7 +22,7 @@ This is a demonstration of building in an Astro website. XElement is exclusively
 
 - [npm package](https://www.npmjs.com/package/astro-xelement)
 
-- [What is XElement?](https://xelement-docs.vercel.app/docs/sarahedits/overview#xelement)
+- [What is XElement?](https://xelement-docs.vercel.app/docs/induction/overview#xelement)
 
 - [XElement API](https://xelement-docs.vercel.app/docs/api/overview#xelement-api)
 
