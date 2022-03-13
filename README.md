@@ -6,7 +6,7 @@ aFuzzyBear will stream his screen in the Astro Discord live chat channel, and Sa
 
 ## Video Playlist of our sessions 
 
-[YouTube](https://studio.youtube.com/channel/UCZnYKlZ65cMMu2E2kvw-L7Q/playlists)
+[YouTube Playlist](https://www.youtube.com/watch?v=0-aH18YH2SQ&list=PLowBAHWxr_2CkblJEAVgHHf1u87mC8WyW)
 
 ## Branches:
 
