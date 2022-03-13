@@ -2,7 +2,11 @@
 
 Join [@sarah11918](https://twitter.com/sarah11918) and [@aFuzzyBear](https://twitter.com/aFuzzyBear2) as we slowly but surely recreate sBird as… xBird! Live in the [Astro Discord](https://astro.build/chat)
 
-aFuzzyBear will stream his screen in the Astro Discord live chat channel, and Sarah will open and share a Gitpod Shared Workspace, so everyone who wants to do more than just watch the stream can be live in the code at the same time!
+aFuzzyBear will stream his screen in the Astro Discord live chat channel, and Sarah will open and share a Gitpod Shared Workspace, so everyone who wants to do more than just watch the stream can be live in the code at the same time. 
+
+## Video Playlist of our sessions 
+
+[YouTube](https://studio.youtube.com/channel/UCZnYKlZ65cMMu2E2kvw-L7Q/playlists)
 
 ## Branches:
 
