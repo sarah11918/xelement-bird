@@ -12,6 +12,10 @@ start - starting point, nothing but a blank page for xBird
 
 publish - the current state of the project, deployed on Netlify at xBird
 
+## Video Playlist of our sessions 
+
+[YouTube Playlist](https://www.youtube.com/watch?v=0-aH18YH2SQ&list=PLowBAHWxr_2CkblJEAVgHHf1u87mC8WyW)
+
 ## Resources
 
 ### [Astro](https://astro.build)
