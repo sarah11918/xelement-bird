@@ -10,7 +10,9 @@ If you’d like to play along at home, you can choose:
 
 start - starting point, nothing but a blank page for xBird
 
-publish - the current state of the project, deployed on Netlify at xBird
+demo - current working branch
+
+publish - verion deployed on Netlify at xBird
 
 ## Video Playlist of our sessions 
 
