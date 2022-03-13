@@ -1,11 +1,10 @@
 ---
-    import XE from './XE/XE.js'
+  import XElement from 'astro-xelement'
 
-    const {button:Button,div:Display} = XE
+
+    const {button:Button,div:Display} = XElement
 ---
 
-    
-    
     <Display @do={(element,store)=>{
         store.typicode = {id:1}
 

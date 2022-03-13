@@ -1,0 +1,200 @@
+---
+ import XElement from 'astro-xelement'
+ const {H5,Button,p:ShadowText}= XElement
+
+const locationCalls ={
+    "CA-PE-PR":()=>{
+        console.log('Canada eh>?')
+    }
+
+}
+
+const fetchBirds =async (event,store)=>{
+  const location =  this.dataset.location
+
+    const myHeaders = new Headers();
+    myHeaders.append("X-eBirdApiToken", `2ifbkhv7g8ct`);
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+      cors:'no-cors'
+    };
+
+    const response = await fetch(
+      `https://api.ebird.org/v2/data/obs/${location}/recent/notable?detail=full&back=30`,
+      requestOptions
+    );
+    const data = await response.json();
+  
+
+  const filterBirds = (data)=>{
+    let listOfPendingNotableBirds = []
+    let listOfValidNotableBirds = []
+
+      const notReviewed = data.filter((bird) => !bird.obsReviewed);
+
+      const reviewedAndValid = data.filter(
+        (bird) => bird.obsReviewed && bird.obsValid
+      );
+
+      const reviewedButNotValid = data.filter(
+        (bird) => bird.obsReviewed && !bird.obsValid
+      );
+
+      for (let i = 0; i < notReviewed.length; i++) {
+        if (!listOfPendingNotableBirds.includes(notReviewed[i].comName)) {
+          listOfPendingNotableBirds.push(notReviewed[i].comName);
+        }
+      }
+
+      for (let i = 0; i < reviewedAndValid.length; i++) {
+        if (!listOfValidNotableBirds.includes(reviewedAndValid[i].comName)) {
+          listOfValidNotableBirds.push(reviewedAndValid[i].comName);
+        }
+      }
+    return [listOfPendingNotableBirds,listOfValidNotableBirds]
+  }
+
+  const literal = (bird)=>
+  `
+    <li class="birdPending">
+      ${bird}
+    </li>
+  `
+  const ul = (children)=> `
+  <h4> Birds </h4>
+  <ul
+    class="birdPending"
+    style={color: "#3d5262"}
+  >
+    ${children}
+  </ul>
+  `
+
+  let listItemsofPendingBirds = filterBirds(data)[0].map(item=>literal(item))
+  let listItemsofValidBirds = filterBirds(data)[1].map(item=>literal(item))
+  list1.innerHTML = "",
+  list2.innerHTML = "",
+  list1.insertAdjacentHTML("beforeend",ul(listItemsofPendingBirds))
+  list2.insertAdjacentHTML("beforeend",ul(listItemsofValidBirds))
+  titleLocation.textContent = this.textContent
+}
+ ---
+ <div style={` background-color: "#eef9ed", padding:"0.5em", border: "1px solid green", borderRadius: "2px"`}>
+      <h3>See recent reports of Rare or Unusual birds!</h3>
+      <H5 class="birdtab">Bird at Location : <span id="titleLocation"></span></H5>
+      <div stlye={`display: "flex" `}>
+        <p>Quick select:</p>
+        <Button
+        style = {`background-color: "yellow"`}
+          class="location-change quickLocation"
+          data-location="CA-ON-TO"
+          @click={fetchBirds}
+        >
+          <span style={`font-weight: "bold"`}>
+            Use my Default Location
+          </span>
+        </Button>
+        <Button
+          class="location-change quickLocation"
+          data-location="CA-ON-TO"
+           @click={fetchBirds}
+        >
+          Toronto
+        </Button>
+        <Button
+          class="location-change quickLocation"
+          data-location="CA-PE"
+           @click={fetchBirds}
+        >
+          PEI
+        </Button>
+        <Button
+          class="location-change quickLocation"
+        data-location="SE-AB" 
+         @click={fetchBirds}
+        >
+          Stockholm
+        </Button>
+        <Button
+          class="location-change quickLocation"
+           data-location="IS-1"
+            @click={fetchBirds}
+        >
+          Reykjavik
+        </Button>
+        <Button
+          class="location-change quickLocation"
+          data-location="AT-9"
+           @click={fetchBirds}
+        >
+          Vienna
+        </Button>
+        <Button
+          class="location-change quickLocation"
+          data-location="DE-BY"
+           @click={fetchBirds}
+        >
+          Munich
+        </Button>
+        <Button
+          class="location-change quickLocation"
+          data-location="CZ-PL"
+           @click={fetchBirds}
+        >
+          Prague
+        </Button>
+        <Button
+          class="location-change quickLocation"
+          data-location="SK-BL"
+           @click={fetchBirds}
+        >
+          Bratislava
+        </Button>
+        <Button
+          class="location-change quickLocation"
+          data-location="LV-RIX"
+           @click={fetchBirds}
+        >
+          Riga
+        </Button>
+        <Button
+          class="location-change quickLocation"
+          data-location="LT-VL"
+           @click={fetchBirds}
+        >
+          Vilnius
+        </Button>
+      </div>
+      <p>... or enter manually</p>
+      <form $onSubmit={"changeLocation"}>
+        <input
+          name="location"
+          type="text"
+          placeholder="eBird region ID eg. CA-PE-PR"
+        
+        />
+        <Button>Submit Location</Button>
+      </form>
+      <div className="image-container">
+      <img src="https://lh3.googleusercontent.com/pw/AM-JKLXBCCGGYuLTL_j0cc_iOTzfwB6DGwY3unGiZy39RXWI-rn1kHMAYAPfzE2IoQaD-2yhzLrYyPCb8tbS_i9lsSjfheOJMU8Wj5Ev6RjVt3IZLol1tzNHaSLObFx2vOUW6zDAMhTXPyroEtASiAUynEr6UA=w566-h92-no?.jpg" />
+      </div>
+      <!-- Return List of Birds: <NotableBirdList birdList={notableBirds} />-->
+       <div style={`display: "flex", justify-content: "space-between" `}>
+        <div>
+          <h4>Birds Awaiting Review</h4>
+          
+         <span id="list1"></span>
+        </div>
+        <div>
+          <h4>Birds Valid Review</h4>
+         <span id="list2"></span>
+        </div>
+      </div>
+      <hr />
+  
+      <ShadowText shadowroot>Hidden on the Shadow DOM </ShadowText>
+    </div>
+    
