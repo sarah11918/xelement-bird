@@ -11,6 +11,7 @@ const site={
     }
 }
 
+const currentPage = Astro.request.url.pathname;
 const url = Astro.request.canonicalURL.href
 const imgSrc = site.image.src;
 const imageAlt = site.image.alt;
@@ -66,11 +67,11 @@ const imageAlt = site.image.alt;
                             <div class="site-nav-inside">
                             
                                 <ul class="nav-list">
-                                    <li class="nav-link"><a href="/">Home</a></li>
-                                    <li class="nav-link"><a href="/about">About</a></li>
-                                    <li class="nav-link"><a href="/sbird">sBird</a></li>
-                                    <li class="nav-link"><a href="/xelement">XElement</a></li>
-                                    <li class="nav-link"><a href="/xbird">xBird</a></li>
+                                    <li class="nav-link ${currentPage === '/' ? 'nav-selected' : undefined}"><a href="/">Home</a></li>
+                                    <li class="nav-link ${currentPage === '/about' ? 'nav-selected' : undefined}"><a href="/about">About</a></li>
+                                    <li class="nav-link ${currentPage === '/sbird' ? 'nav-selected' : undefined}"><a href="/sbird">sBird</a></li>
+                                    <li class="nav-link ${currentPage === '/xelement' ? 'nav-selected' : undefined}"><a href="/xelement">XElement</a></li>
+                                    <li class="nav-link ${currentPage === '/xbird' ? 'nav-selected' : undefined}"><a href="/xbird">xBird</a></li>
                                 </ul>
                                 <div class="social-links social">
                                     <a href="https://twitter.com/sarah11918" class="button-circle">

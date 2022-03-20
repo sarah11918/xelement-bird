@@ -170,7 +170,12 @@ header {
     .nav-link .active a {
       color: white;
     }
-  
+    
+    .nav-selected {
+      font-style: italic;
+      font-weight: bold;
+    }
+
     .social {
       visibility: hidden;
     }
