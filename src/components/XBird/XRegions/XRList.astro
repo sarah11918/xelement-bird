@@ -1,0 +1,40 @@
+---
+import XElememt from 'astro-xelement'
+const {Div,Span} = XElememt
+---
+
+<Div class="locations js-xrlocations" 
+    @observe={(entry,store,o={attributes:true})=>{
+        regionsReturn.textContent = `Regions in ${store?.country?.code || 'Borked'}`
+        const list = this.querySelector('ul')
+        const span = this.querySelector('p > span')
+        const literal =(data)=>`
+            <li class="regionItem">
+                <span>
+                    <button class="region-button" data-code="${data.code}"
+                    >
+                    ${data.code} --- ${data.name}
+                    </button>
+                </span>
+            </li>`
+        let data = JSON.parse(this.dataset.data).map(item=>literal(item))
+        list.innerHTML= data
+        span.textContent = `Currently Set to : ${store?.country?.code}`
+    }}
+>
+        <h3  id="regionsReturn" 
+            style={`margin-top="0.1em", margin-bottom= "0.1em", padding-left= "0.1em"`}
+        >   
+        </h3>
+        <p style={`margin-top="0", padding-left="0.1em"`}>
+            <span></span>
+        </p>
+        <ul 
+            style={`display="flex", flex-wrap="wrap", list-style-type="none", padding-left="0.1em", margin-top: "0", padding-bottom: "0"`}
+        
+        >
+            <!--Fill this in using textContent {regionDivs} -->
+        </ul>
+</Div>
+
+

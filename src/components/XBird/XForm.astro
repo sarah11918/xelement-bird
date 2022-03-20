@@ -1,0 +1,20 @@
+---
+import XElement from 'astro-xelement'
+
+const { Form, input:TextInput, Button } = XElement
+---
+
+<Form style={`paddingBottom:"2em"`} @submit:prevent={()=>{}}>
+    <TextInput
+        name="defaultLocation"
+        type="text"
+        placeholder="eBird region ID eg. CA-PE-PR"
+        @change={(event,store)=>{
+            store.defaultLocation = this.value 
+        }}
+    />
+    <Button @click:prevent={(_,store)=>{
+             defaultButton.dataset.location = store.defaultLocation
+        
+        }}>Set a default Location</Button>
+</Form>
