@@ -85,10 +85,12 @@ const fetchBirds = async (event,store,)=>{
 }
  ---
  
- <div style={` background-color: "#eef9ed", padding:"0.5em", border: "1px solid green", borderRadius: "2px"`}>
+ <div style={`background-color: "#eef9ed", padding:"0.5em", border: "1px solid green", border-radius: "2px"`}>
       <h3>See recent reports of Rare or Unusual birds!</h3>
       
-      <H5 class="birdtab">Bird at Location : <span id="titleLocation"></span></H5>
+      <H5 class="birdtab">
+        Bird at Location : <span id="titleLocation"></span>
+      </H5>
       
       <div stlye={`display: "flex" `}>
         <p>Quick select:</p>
@@ -199,7 +201,5 @@ const fetchBirds = async (event,store,)=>{
         </div>
       </div>
       <hr />
-  
-      <ShadowText shadowroot>Hidden on the Shadow DOM </ShadowText>
     </div>
     
