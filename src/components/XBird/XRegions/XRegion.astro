@@ -18,6 +18,7 @@
         style={`text-transform: "uppercase"`}
         @change={(_,store)=>{
             store.country = {code: this.value, data:''}
+            store.defaultLocation = this.value
         }}
     />
         <Button @click={async (ev,store)=>{

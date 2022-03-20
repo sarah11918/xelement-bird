@@ -11,7 +11,8 @@ const locationCalls ={
 }
 
 const fetchBirds = async (event,store,)=>{
-  const location =  store.location = this.dataset.location 
+  const location =  this.dataset.location || store.defaultLocation
+   store.location = this.dataset.location 
 
     const myHeaders = new Headers();
     myHeaders.append("X-eBirdApiToken", `2ifbkhv7g8ct`);

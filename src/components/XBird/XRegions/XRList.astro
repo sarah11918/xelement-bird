@@ -1,13 +1,13 @@
 ---
 import XElememt from 'astro-xelement'
-const {Div,Span} = XElememt
+const {Div,Span, Ul} = XElememt
 ---
 
 <Div class="locations js-xrlocations" 
-    @observe={(entry,store,o={attributes:true})=>{
-        regionsReturn.textContent = `Regions in ${store?.country?.code || 'Borked'}`
+    @observe={(entry,store,options={attributes:true})=>{
+        regionsReturn.textContent = `Regions in ${store.defaultLocation|| 'Borked'}`
         const list = this.querySelector('ul')
-        const span = this.querySelector('p > span')
+        const span = this.querySelector('#locationDisplay')
         const literal =(data)=>`
             <li class="regionItem">
                 <span>
@@ -19,7 +19,7 @@ const {Div,Span} = XElememt
             </li>`
         let data = JSON.parse(this.dataset.data).map(item=>literal(item))
         list.innerHTML= data
-        span.textContent = `Currently Set to : ${store?.country?.code}`
+        span.dataset.location = store.defaultLocation
     }}
 >
         <h3  id="regionsReturn" 
@@ -27,14 +27,66 @@ const {Div,Span} = XElememt
         >   
         </h3>
         <p style={`margin-top="0", padding-left="0.1em"`}>
-            <span></span>
+            <Span id="locationDisplay" @observe={()=>
+                this.textContent = `Currently Set to : ${this.dataset.location}`}></Span>
         </p>
-        <ul 
+        <Ul 
             style={`display="flex", flex-wrap="wrap", list-style-type="none", padding-left="0.1em", margin-top: "0", padding-bottom: "0"`}
-        
-        >
-            <!--Fill this in using textContent {regionDivs} -->
-        </ul>
-</Div>
+            @observe={(entry,store)=>{
+                const allTheButtons = [...this.querySelectorAll('button')].forEach((btn)=>{
+                    btn.addEventListener('click',async ()=>{
+                        const locationURL = `https://api.ebird.org/v2/ref/region/list/subnational2/${btn.dataset.code}.json`;
+                        const myHeaders = new Headers();
+                        myHeaders.append("X-eBirdApiToken", `2ifbkhv7g8ct`);
 
+                        const requestOptions = {
+                        method: "GET",
+                        headers: myHeaders,
+                        redirect: "follow"
+                        };
+
+                        const subRegions = document.querySelector('.js-subRegions')
+                        const locationDisplay = document.querySelector('#locationDisplay')
+                        const response = await fetch(locationURL, requestOptions).then(res=>res.json());
+                        subRegions.dataset.data = JSON.stringify(response);
+                        store.defaultLocation = btn.dataset.code
+                        locationDisplay.dataset.location = store.defaultLocation
+                    })
+                })
+            }}
+        >
+        </Ul>
+        <Div class="js-subRegions" style={`display=none`}
+            @observe={(entry,store,options={attributes:true})=>{
+                this.style.display = 'block'
+                const list = this.querySelector('ul')
+                const literal =(data)=>`
+                    <li class="regionItem">
+                        <span>
+                            <button class="region-button" data-code="${data.code}"
+                            >
+                            ${data.code} --- ${data.name}
+                            </button>
+                        </span>
+                    </li>`
+                let data = JSON.parse(this.dataset.data).map(item=>literal(item))
+                list.innerHTML= data
+                
+            }}
+        >
+            <hr>
+            <Ul @observe={(entry,store)=>{
+                [...this.querySelectorAll('button')].forEach((btn)=>{
+                    btn.addEventListener('click',async ()=>{
+                        store.defaultLocation = btn.dataset.code
+                        console.log(store)
+                    })
+                })
+            }}>
+            
+            </Ul>
+        </Div>
+            <!--Fill this in using textContent {regionDivs} -->
+</Div>
+   
 
