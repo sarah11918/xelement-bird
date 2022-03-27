@@ -1,16 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { Markdown } from 'astro/components';
-const content = await fetch('https://raw.githubusercontent.com/sarah11918/xelement-bird/main/README.md').then(res => res.text());
+const content = await fetch('https://raw.githubusercontent.com/sarah11918/xelement-bird/publish/README.md').then(res => res.text());
 ---
-<BaseLayout title="XBird">
+<BaseLayout title="About">
  <main>
     <Markdown>
      # About xBird
 
         This is a community, build-in-public experiment where we take an existing [React “sBird” app from Sarah’s Astro website](https://rainsberger.ca/sbird) and try to reproduce the functionality in Astro using XElement.
 
-        sBird, and this site, was built by [Sarah](https://rainsberger.ca/) and XElement is the creation of [Fuzzy](https://afuzzybear.hashnode.dev/).
+        sBird, and this site, was built by [Sarah](https://rainsberger.ca/) and XElement is the creation of [Fuzzy](https://afuzzybear.hashnode.dev/) and [Jonathan Neal](https://jonneal.dev/).
 
         The [repository is on GitHub](https://github.com/sarah11918/xbird) and we will be live-coding in the [Astro Discord](https://astro.build/chat) where we’ll provide a link to a shared workspace on [Gitpod](https://gitpod.io) so we can all be in the code remotely, together!
 
