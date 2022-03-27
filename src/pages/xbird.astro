@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import XNotable from '../components/XBird/XNotable.astro'
+import XForm from '../components/XBird/XForm.astro'
+import XRegion from '../components/XBird/XRegions/XRegion.astro'
 ---
 <BaseLayout title="XBird">
  <main>
@@ -14,18 +16,12 @@ import XNotable from '../components/XBird/XNotable.astro'
          <h3>
             Type in a new default location code
          </h3>
-         <form style={`paddingBottom:"2em"`} $Submit={"$changeDefaultLocation"}>
-            <input
-            name="defaultLocation"
-            type="text"
-            placeholder="eBird region ID eg. CA-PE-PR"
 
-            />
-            <button>Set a default Location</button>
-         </form>
-
+         <XForm/>
+         
          <h3>Find an area's eBird location code</h3>
          <!-- This is an XElement <Regions /> -->
+         <XRegion/>
       </div>
    </div>
    <div>

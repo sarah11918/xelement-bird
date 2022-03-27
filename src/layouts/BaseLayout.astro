@@ -11,6 +11,7 @@ const site={
     }
 }
 
+const currentPage = Astro.request.url.pathname;
 const url = Astro.request.canonicalURL.href
 const imgSrc = site.image.src;
 const imageAlt = site.image.alt;

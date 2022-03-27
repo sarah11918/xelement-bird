@@ -1,6 +1,7 @@
 ---
  import XElement from 'astro-xelement'
- const {H5,Button,p:ShadowText}= XElement
+ 
+ const { H5, Button, p:ShadowText }= XElement
 
 const locationCalls ={
     "CA-PE-PR":()=>{
@@ -9,8 +10,9 @@ const locationCalls ={
 
 }
 
-const fetchBirds =async (event,store)=>{
-  const location =  this.dataset.location
+const fetchBirds = async (event,store,)=>{
+  const location =  this.dataset.location || store.defaultLocation
+   store.location = this.dataset.location 
 
     const myHeaders = new Headers();
     myHeaders.append("X-eBirdApiToken", `2ifbkhv7g8ct`);
@@ -79,18 +81,24 @@ const fetchBirds =async (event,store)=>{
   list2.innerHTML = "",
   list1.insertAdjacentHTML("beforeend",ul(listItemsofPendingBirds))
   list2.insertAdjacentHTML("beforeend",ul(listItemsofValidBirds))
-  titleLocation.textContent = this.textContent
+
+  titleLocation.textContent = (this.textContent.includes(' Use my Default Location') ? store.defaultLocation : this.textContent)
 }
  ---
- <div style={` background-color: "#eef9ed", padding:"0.5em", border: "1px solid green", borderRadius: "2px"`}>
+ 
+ <div style={`background-color: "#eef9ed", padding:"0.5em", border: "1px solid green", border-radius: "2px"`}>
       <h3>See recent reports of Rare or Unusual birds!</h3>
-      <H5 class="birdtab">Bird at Location : <span id="titleLocation"></span></H5>
+      
+      <H5 class="birdtab">
+        Bird at Location : <span id="titleLocation"></span>
+      </H5>
+      
       <div stlye={`display: "flex" `}>
         <p>Quick select:</p>
         <Button
-        style = {`background-color: "yellow"`}
+          style = {`background-color: "yellow"`}
           class="location-change quickLocation"
-          data-location="CA-ON-TO"
+          id="defaultButton"
           @click={fetchBirds}
         >
           <span style={`font-weight: "bold"`}>
@@ -186,15 +194,13 @@ const fetchBirds =async (event,store)=>{
         <div>
           <h4>Birds Awaiting Review</h4>
           
-         <span id="list1"></span>
+          <span id="list1"></span>
         </div>
         <div>
           <h4>Birds Valid Review</h4>
-         <span id="list2"></span>
+          <span id="list2"></span>
         </div>
       </div>
       <hr />
-  
-      <ShadowText shadowroot>Hidden on the Shadow DOM </ShadowText>
     </div>
     
