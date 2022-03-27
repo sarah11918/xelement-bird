@@ -1,10 +1,47 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import App from '../XBird/App.astro';
+import BaseLayout from '../layouts/BaseLayout.astro'
+import XNotable from '../components/XBird/XNotable.astro'
+import XForm from '../components/XBird/XForm.astro'
+import XRegion from '../components/XBird/XRegions/XRegion.astro'
 ---
 <BaseLayout title="XBird in XElement">
  <main>
-    <h1>XBird</h1>
-    <App />
+  <h1>XBirdy</h1>
+ 
+ <div>
+      <h3 style={`fontSize: "0.75em", fontStyle: "italic", paddingBottom: "0.25em"`}>
+         Set a default location
+      </h3>
+      <div className="all-details">
+         <h3>
+            Type in a new default location code
+         </h3>
+
+         <XForm/>
+         
+         <h3>Find an area's eBird location code</h3>
+         <!-- This is an XElement <Regions /> -->
+         <XRegion/>
+      </div>
+   </div>
+   <div>
+      <h3 style={`fontStyle: "italic"`}>
+         What is an eBird region?
+      </h3>
+      <p>
+         You can explore eBird data for an entire country, or for a smaller region like a state or province... sometimes, for a specific county or city.
+      </p>
+      <p>
+         For example, you can search bird data in all of Canada (CA), in the entire province of Ontario (CA-ON), or just in the city of Toronto (CA-ON-TO). 
+      </p> 
+      <p>
+         The United States, Canada, and Great Britain (GB) are examples of areas where bird data is recorded by top level location, region and sub-region. Many countries, however, do not break down their regions into sub-regions. For example, Sweden's top-level country location code is SE, and Stockholm's location code is SE-AB, and there are no smaller sub-regions classified by eBird.
+      </p>
+   </div>
+     <!-- Notable App Would go here -->
+     <XNotable/>
+   <h2>Other Tools</h2>
+     <!-- Recent App Would go here -->
+     <!-- RegionalDate App Would go here. -->
  </main>
 </BaseLayout>  

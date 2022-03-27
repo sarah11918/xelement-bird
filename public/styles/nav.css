@@ -175,9 +175,14 @@ header {
       font-style: italic;
       font-weight: bold;
     }
-    
+
     .social {
       visibility: hidden;
+    }
+      
+    .nav-selected {
+      font-style: italic;
+      font-weight: bold;
     }
   
     .social-footer {
