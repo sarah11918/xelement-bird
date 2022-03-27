@@ -1,0 +1,41 @@
+---
+ import XElement from 'astro-xelement'
+ import XRList from './XRList.astro'
+ const {Form,Input,Button}=XElement
+---
+<div>
+    <h5 style={`margin-bottom = "0"`}>Find a location code!</h5>
+    <p style={`margin-top = "0"`}>
+        Start by entering a 2-letter country code.  
+    <span style={`font-style: "italic"`}>(Use "GB" for locations in Great Britain.)</span>
+    </p>
+    
+    <Form @submit:prevent={()=>{}}>
+    <Input
+        name="country"
+        type="text"
+        placeholder="eg. SE, AU, GB for Great Britain"
+        style={`text-transform: "uppercase"`}
+        @change={(_,store)=>{
+            store.country = {code: this.value, data:''}
+            store.defaultLocation = this.value
+        }}
+    />
+        <Button @click={async (ev,store)=>{
+            const regionUrl = `https://api.ebird.org/v2/ref/region/list/subnational1/${store.country.code}.json`;
+            const myHeaders = new Headers();
+            myHeaders.append("X-eBirdApiToken", `2ifbkhv7g8ct`);
+
+            const requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow"
+            };
+
+            const response = await fetch(regionUrl, requestOptions);
+            const locationList = document.querySelector('.js-xrlocations')
+            locationList.dataset.data = store.country.data = JSON.stringify(await response.json());
+        }}>Submit country code</Button>
+    </Form>
+    <XRList/>
+</div>
